@@ -1,0 +1,13 @@
+Node.js is a powerful JavaScript runtime built on Chrome's V8 JavaScript engine. It allows you to run JavaScript on the server-side, making it possible to create full-stack applications with JavaScript.
+
+In this post, we'll explore the basics of Node.js and how to get started with your first application.
+
+## Why Node.js?
+
+Node.js offers several advantages:
+- Non-blocking I/O model making it lightweight and efficient
+- Large ecosystem of libraries via npm
+- Same language on frontend and backend
+- Great for real-time applications
+
+Stay tuned for more tutorials on building with Node.js!
