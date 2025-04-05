@@ -1,0 +1,71 @@
+title: Building a Blog with Node.js and Express
+author: warp
+date: 2025-04-01T12:00:00Z
+tags: nodejs, javascript, tutorial
+image: /images/posts/post-1.jpg
+---
+*below is the content that AI-generated while building the blog system. it was interesting enough that I felt like keeping it here. before, this was the first three posts -- I just combined them into one*
+
+Today we're creating a simple blog system using Node.js, Express, and plain text files for content.
+
+Instead of using a database, we're storing each post as a pair of files:
+1. A JSON file containing metadata (title, author, date, tags)
+2. A TXT file containing the actual content of the post
+
+This approach is simple yet powerful for small sites and personal blogs. It makes content management straightforward - just add new files to the posts directory!
+
+## Benefits of This Approach
+
+- No database setup required
+- Easy version control with Git
+- Simple to back up
+- Markdown support can be easily added
+- Content can be edited with any text editor
+
+In the next post, we'll look at adding an admin interface for creating and editing posts without directly editing files.
+
+Express.js is one of the most popular web frameworks for Node.js. It provides a robust set of features for building web applications and APIs.
+
+Express makes it easy to create routes, handle requests, and manage middleware. In this post, we'll look at how to set up a basic Express server and handle different types of requests.
+
+## Basic Express Server
+
+Setting up an Express server is straightforward. First, install Express:
+
+```
+npm install express
+```
+
+Then create a simple server:
+
+```javascript
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+```
+
+In future posts, we'll explore more advanced Express features!
+
+## Node.js Basics
+
+Node.js is a powerful JavaScript runtime built on Chrome's V8 JavaScript engine. It allows you to run JavaScript on the server-side, making it possible to create full-stack applications with JavaScript.
+
+In this post, we'll explore the basics of Node.js and how to get started with your first application.
+
+## Why Node.js?
+
+Node.js offers several advantages:
+- Non-blocking I/O model making it lightweight and efficient
+- Large ecosystem of libraries via npm
+- Same language on frontend and backend
+- Great for real-time applications
+
+Stay tuned for more tutorials on building with Node.js!

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="theme-toggle" aria-label="Toggle dark mode">🌓 Theme</button>
+            <h1>My Blog</h1>
+            <p class="subtitle">A simple Node.js blog with posts from text files</p>
+        </header>
+        
+        <main>
+            <div id="posts-container">
+                <div class="loading">Loading posts...</div>
+            </div>
+            
+            <div id="pagination-container"></div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 My Blog</p>
+        </footer>
+    </div>
+    <script src="/js/main.js"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for system preference
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Check for saved theme preference, fall back to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        html.setAttribute('data-theme', initialTheme);
+        
+        // Listen for system preference changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            }
+        });
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
