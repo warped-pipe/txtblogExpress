@@ -15,82 +15,73 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch posts for the current page
     fetchPosts(currentPage);
     
-    function fetchPosts(page) {
-        // Show loading indicator
-        postsContainer.innerHTML = '<div class="loading">Loading posts...</div>';
-        
-        // Fetch posts from the server
-        fetch(`/api/posts?page=${page}`)
-            .then(response => response.json())
-            .then(data => {
-                const { posts, pagination } = data;
+    async function fetchPosts(page = 1) {
+        try {
+            const response = await fetch(`/api/posts?page=${page}`);
+            if (!response.ok) throw new Error('Failed to fetch posts');
+            
+            const data = await response.json();
+            const posts = data.posts;
+            
+            // Update recent posts in sidebar
+            updateRecentPosts(posts);
+            
+            // Clear existing posts
+            postsContainer.innerHTML = '';
+            
+            // Display each post
+            posts.forEach(post => {
+                const postElement = document.createElement('article');
+                // Add full-post class only when viewing a single post
+                const isSinglePost = window.location.pathname.startsWith('/post/');
+                postElement.className = isSinglePost ? 'post full-post' : 'post';
                 
-                // Clear loading message
-                postsContainer.innerHTML = '';
-                
-                if (posts.length === 0) {
-                    postsContainer.innerHTML = '<div class="no-posts">No posts found</div>';
-                    return;
-                }
-                
-                // Display each post
-                posts.forEach(post => {
-                    const postElement = document.createElement('article');
-                    // Add full-post class only when viewing a single post
-                    const isSinglePost = window.location.pathname.startsWith('/post/');
-                    postElement.className = isSinglePost ? 'post full-post' : 'post';
-                    
-                    // Format the date
-                    const postDate = new Date(post.date);
-                    const formattedDate = postDate.toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                    
-                    // Create tags HTML if tags exist
-                    let tagsHtml = '';
-                    if (post.tags && post.tags.length > 0) {
-                        tagsHtml = '<div class="post-tags">' + 
-                            post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') +
-                            '</div>';
-                    }
-                    
-                    // Add Read More link if we're on the main page and the post has more content
-                    let readMoreHtml = '';
-                    if (!isSinglePost && post.content.length > 500) {
-                        readMoreHtml = `<p class="read-more"><a href="/post/${post.id}">Read More...</a></p>`;
-                    }
-                    
-                    // Format content only for full post view
-                    const content = isSinglePost ? formatContent(post.content) : post.content;
-                    
-                    postElement.innerHTML = `
-                        <h2 class="post-title">${post.title}</h2>
-                        <div class="post-meta">
-                            Posted on ${formattedDate} by ${post.author}
-                            ${tagsHtml}
-                        </div>
-                        ${post.image ? `<div class="post-image-container"><img src="${post.image}" alt="${post.title}" class="post-image"></div>` : ''}
-                        <div class="post-content">${content}</div>
-                        ${readMoreHtml}
-                    `;
-                    
-                    postsContainer.appendChild(postElement);
+                // Format the date
+                const postDate = new Date(post.date);
+                const formattedDate = postDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                 });
                 
-                // Create pagination
-                updatePagination(pagination);
-                
-                // Update page title with current page info
-                if (pagination.page > 1) {
-                    document.title = `My Blog - Page ${pagination.page}`;
+                // Create tags HTML if tags exist
+                let tagsHtml = '';
+                if (post.tags && post.tags.length > 0) {
+                    tagsHtml = '<div class="post-tags">' + 
+                        post.tags.map(tag => `<span class="tag">${tag}</span>`).join('') +
+                        '</div>';
                 }
-            })
-            .catch(error => {
-                console.error('Error fetching posts:', error);
-                postsContainer.innerHTML = '<div class="error">Failed to load posts. Please try again later.</div>';
+                
+                // Add Read More link if we're on the main page and the post has more content
+                let readMoreHtml = '';
+                if (!isSinglePost && post.content.length > 500) {
+                    readMoreHtml = `<p class="read-more"><a href="/post/${post.id}">Read More...</a></p>`;
+                }
+                
+                // Format content only for full post view
+                const content = isSinglePost ? formatContent(post.content) : post.content;
+                
+                postElement.innerHTML = `
+                    <h2 class="post-title">${post.title}</h2>
+                    <div class="post-meta">
+                        Posted on ${formattedDate} by ${post.author}
+                        ${tagsHtml}
+                    </div>
+                    ${post.image ? `<div class="post-image-container"><img src="${post.image}" alt="${post.title}" class="post-image"></div>` : ''}
+                    <div class="post-content">${content}</div>
+                    ${readMoreHtml}
+                `;
+                
+                postsContainer.appendChild(postElement);
             });
+            
+            // Update pagination
+            updatePagination(data.pagination);
+            
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+            postsContainer.innerHTML = `<div class="error">Error loading posts. Please try again later.</div>`;
+        }
     }
     
     function updatePagination(pagination) {
@@ -214,5 +205,30 @@ document.addEventListener('DOMContentLoaded', function() {
         text = text.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="inline-image">');
         
         return text;
+    }
+
+    function updateRecentPosts(posts) {
+        const recentPostsList = document.getElementById('recent-posts');
+        if (!recentPostsList) return;
+        
+        // Sort posts by date, newest first
+        const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Take the 5 most recent posts
+        const recentPosts = sortedPosts.slice(0, 5);
+        
+        // Clear existing content
+        recentPostsList.innerHTML = '';
+        
+        // Add recent posts to the list
+        recentPosts.forEach(post => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `/post/${post.id}`;
+            // Truncate title to 20 characters and add ellipsis if needed
+            a.textContent = post.title.length > 20 ? post.title.substring(0, 20) + '...' : post.title;
+            li.appendChild(a);
+            recentPostsList.appendChild(li);
+        });
     }
 });

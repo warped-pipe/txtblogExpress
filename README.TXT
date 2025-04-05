@@ -8,11 +8,11 @@
 						(c) 2025
 +======================================================+
 
-		txtblogExpress	V.1.2.0
+		txtblogExpress	V.0.3.0
 
 +======================================================+
 
-	txtblogExpress/ (V.1.2.0)
+	txtblogExpress/ (V.0.3.0)
         ├── public/
         │   ├── index.html          # Main blog page
         │   ├── post.html           # Individual post page
@@ -92,6 +92,6 @@
 
 	+= POSSIBLE FEATURES TO-DO LIST: =+
 
-	~ IMAGE DITHERING (ONLY ON LOW POWER VERSION? TEST)
-    ~ LOG IN PAGE WITH FORM TOOL THAT COULD BE USED TO CREATE JSON+TXT
-        (OR A SIMPLE CLI SCRIPT)
+		~ IMAGE DITHERING (ONLY ON LOW POWER VERSION? TEST)
+   		~ LOG IN PAGE WITH FORM TOOL THAT COULD BE USED TO CREATE JSON+TXT
+        	(OR A SIMPLE CLI SCRIPT)

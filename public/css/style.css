@@ -82,8 +82,53 @@ header h1 {
     font-style: italic;
 }
 
-main {
+.content-wrapper {
+    display: flex;
+    gap: 2em;
     padding: 20px;
+}
+
+.sidebar {
+    width: 175px;
+    flex-shrink: 0;
+    background-color: var(--container-bg);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.sidebar h3 {
+    color: var(--header-color);
+    margin: 1em 0 0.5em;
+    font-size: 1.1em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 0.5em;
+}
+
+.sidebar a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.5em;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--link-bg);
+}
+
+main {
+    flex: 1;
+    min-width: 0;
 }
 
 .post {
@@ -353,6 +398,15 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        order: -1;
+    }
+    
     .pagination ul {
         margin: 0 -3px;
     }
