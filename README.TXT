@@ -37,6 +37,9 @@
 		├── deploy.txt				# Help deploying
         └── .gitignore            # Git ignore rules
 
+
+
+
         Key Features:
         - Node.js + Express backend
         - TXT file based posts with JSON metadata
@@ -45,6 +48,9 @@
         - Responsive design
         - Pagination (10 posts per page)
         - Post preview for long content (>127 words)
+        - Sidebar navigation with recent posts
+        - Full post page with consistent layout
+        - Markdown-style formatting support
 
 
 
@@ -76,7 +82,10 @@
 		EVERY 10 POSTS, A NEW PAGE IS CREATED.
         THERE IS NOW A TOGGLE SWITCH TO SWAP BETWEEN
         DARK AND LIGHT MODES, WITH PERSISTENCE ONCE
-        ONE IS CHOSEN.
+        ONE IS CHOSEN. THE BLOG NOW INCLUDES A SIDEBAR
+        WITH NAVIGATION LINKS AND RECENT POSTS, WHICH
+        IS CONSISTENT ACROSS ALL PAGES. POSTS SUPPORT
+        MARKDOWN-STYLE FORMATTING FOR BETTER READABILITY.
 
 	--> CUSTOMIZE:
 		THE BLOG CREATED BY THIS PROJECT WAS LEFT
