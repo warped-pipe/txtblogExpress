@@ -4,6 +4,11 @@ date: 2025-04-01T12:00:00Z
 tags: nodejs, javascript, tutorial
 image: /images/posts/post-1.jpg
 ---
+
+I had previously been using classicpress for blogging, but was unhappy with it overall and felt that what I needed was something much more lightweight, simple, and most importantly, I wanted to be able to take my .txt files -- the way that I had been taking notes and creating documentation for many years -- and turn them into a blog.
+
+So, I set out to make something that would make it easier for me to share my projects by allowing me to throw the .txt files that I'm writing anyway into a directory and have them automatically converted to HTML, an RSS feed, and a sitemap -- while also not sacrificing style and layout. I probably could have used Hugo or something, but where is the fun in that? Plus, now I have something to build on. Who knows what it'll be in a few years?
+
 *below is the content that AI-generated while building the blog system. it was interesting enough that I felt like keeping it here. before, this was the first three posts -- I just combined them into one*
 
 Today we're creating a simple blog system using Node.js, Express, and plain text files for content.

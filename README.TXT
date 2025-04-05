@@ -12,36 +12,50 @@
 
 +======================================================+
 
-		project-root/
-		├── public/
-		│   ├── index.html
-		│   ├── css/
-		│   │   └── style.css
-		│   ├── js/
-		│   │   └── main.js
-		│   └── posts/ (directory for rendered posts)
-		├── posts/ (source post data)
-		│   ├── post-1.json
-		│   ├── post-1.txt
-		│   ├── post-2.json
-		│   ├── post-2.txt
-		│   └── post-3.json
-		│   └── post-3.txt
-		├── server.js
-		├── package.json
-		└── .gitignore
+	txtblogExpress/ (V.1.2.0)
+        ├── public/
+        │   ├── index.html          # Main blog page
+        │   ├── post.html           # Individual post page
+        │   ├── images/             # Directory for post images
+        │   ├── css/
+        │   │   └── style.css       # Main stylesheet
+        │   └── js/
+        │       └── main.js         # Main JavaScript file
+        ├── posts/
+        │   ├── post-1.txt          # Post content in TXT format
+        │   ├── post-1.json         # Post metadata
+        │   ├── post-2.txt
+        │   ├── post-2.json
+        │   ├── post-3.txt
+        │   └── post-3.json
+        ├── server.js               # Express server
+        ├── package.json           # Project configuration
+        ├── package-lock.json      # Dependency lock file
+        ├── README.TXT            # Project documentation
+        ├── LICENSE.TXT           # GPL-3.0 license
+        └── .gitignore            # Git ignore rules
+
+        Key Features:
+        - Node.js + Express backend
+        - TXT file based posts with JSON metadata
+        - Image support (.jpg and .png)
+        - Dark/Light mode toggle
+        - Responsive design
+        - Pagination (10 posts per page)
+        - Post preview for long content (>127 words)
 
 
 
 	--> HOW TO USE THIS SOFTWARE:
-		1. SET UP PROJECT STRUCTURE AS SHOWN ABOVE
+		1. DOWNLOAD AND ENSURE PROJECT STRUCTURE IS AS SHOWN ABOVE
 		2. INSTALL DEPENDENCIES: "npm install"
 		3. START THE SERVER: "npm start"
 		3a. FOR DEVELOPMENT, ENTER "npm run dev"
-			ALLOWING AUTO-START TO MAKE
+			ALLOWING SERVER AUTO-START TO MAKE
 			MAKING CHANGES EASY.
 		4. ACCESS BY VISITING:
 			"HTTP://LOCALHOST:3000"
+
 
 	--> INFORMATION:
 		THIS PROJECT TAKES CONTENT THAT YOU UPLOAD
