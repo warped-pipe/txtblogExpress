@@ -34,7 +34,7 @@
         ├── README.TXT            # Project documentation
         ├── LICENSE.TXT           # GPL-3.0 license
 		├── formatting.txt			# Formatting help
-		├── deploy.txt				# Help deploying this software
+		├── deploy.txt				# Help deploying
         └── .gitignore            # Git ignore rules
 
         Key Features:
