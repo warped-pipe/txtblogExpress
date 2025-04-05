@@ -33,6 +33,8 @@
         ├── package-lock.json      # Dependency lock file
         ├── README.TXT            # Project documentation
         ├── LICENSE.TXT           # GPL-3.0 license
+		├── formatting.txt			# Formatting help
+		├── deploy.txt				# Help deploying this software
         └── .gitignore            # Git ignore rules
 
         Key Features:
