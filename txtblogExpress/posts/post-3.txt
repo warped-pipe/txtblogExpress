@@ -1,0 +1,17 @@
+Today we're creating a simple blog system using Node.js, Express, and plain text files for content.
+
+Instead of using a database, we're storing each post as a pair of files:
+1. A JSON file containing metadata (title, author, date, tags)
+2. A TXT file containing the actual content of the post
+
+This approach is simple yet powerful for small sites and personal blogs. It makes content management straightforward - just add new files to the posts directory!
+
+## Benefits of This Approach
+
+- No database setup required
+- Easy version control with Git
+- Simple to back up
+- Markdown support can be easily added
+- Content can be edited with any text editor
+
+In the next post, we'll look at adding an admin interface for creating and editing posts without directly editing files.
