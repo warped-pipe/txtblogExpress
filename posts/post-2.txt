@@ -1,9 +1,18 @@
-title: Toying with Programming
+title: Express.js Basics
 author: warp
-date: 2025-04-02T10:30:00Z
-tags: express, nodejs, web development
+date: 2025/04/02
+tags: express, nodejs, web
 image: /images/posts/post-2.jpg
 ---
 I had previously been using classicpress for blogging, but was unhappy with it and felt that what I needed was something much more lightweight, preferably static, and I wanted to be able to write in .txt files using markdown -- as I would normally for writing long-form notes or documentation.
+
 So, I set out to make something that would make it easier for me to share my projects by allowing me to throw the .txt files that I'm writing anyway into a directory and have them automatically converted to HTML, an RSS feed, and a sitemap -- while also not sacrificing style and layout.
+
 I probably could have used Hugo or something, but where is the fun in that? Plus, now I have something to build on. Who knows what it'll be in a few years?
+
+Here's an example of a soft line break:
+This line continues right after the previous one.
+
+
+And here's a regular paragraph break:
+This is a new paragraph.

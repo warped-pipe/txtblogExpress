@@ -1,10 +1,11 @@
 {
-  "title": "Toying with Programming",
+  "title": "Express.js Basics",
   "author": "warp",
-  "date": "2025-04-02T10:30:00.000Z",
+  "date": "2025-04-02T05:00:00.000Z",
   "tags": [
     "express",
     "nodejs",
-    "web development"
-  ]
+    "web"
+  ],
+  "image": "/images/posts/post-2.png"
 }

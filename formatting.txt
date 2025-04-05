@@ -1,0 +1,118 @@
+TXT Blog Post Formatting Guide
+============================
+
+1. Metadata Format
+-----------------
+The first few lines of your post must contain metadata in this exact format:
+
+Title: Your Post Title
+Author: yourname
+Date: YYYY/MM/DD
+Tags: tag1, tag2, tag3
+Image: /images/posts/post-1.jpg
+
+2. Text Formatting
+-----------------
+- Use double line breaks (\n\n) to separate paragraphs
+- Single line breaks (\n) will be treated as line breaks within a paragraph
+- Use *text* for italic text
+- Use **text** for bold text
+
+Example:
+This is the first paragraph with *italic* and **bold** text.
+
+This is the second paragraph.
+This line is part of the second paragraph.
+
+3. Headers
+---------
+- Use ## followed by a space for section headers
+- Headers should be on their own line
+
+Example:
+## Section Title
+
+4. Lists
+--------
+- Use - followed by a space for bullet points
+- Each list item should be on its own line
+- Lists should be separated from other content by double line breaks
+- List items can contain *italic*, **bold**, [links](url), and ![images](url)
+
+Example:
+Here's a list of items:
+
+- First *item* with **emphasis**
+- Second item with a [link](https://example.com)
+- Third item with an ![image](/images/example.jpg)
+
+5. Code Blocks
+-------------
+- Use triple backticks (```) to start and end code blocks
+- Code blocks should be on their own lines
+- Separate code blocks from other content with double line breaks
+
+Example:
+Here's some code:
+
+```
+function hello() {
+    console.log('Hello World');
+}
+```
+
+6. Links and Images
+------------------
+- Use [text](url) for links
+- Use ![alt text](url) for inline images
+- URLs can be relative (starting with /) or absolute (starting with http:// or https://)
+
+Example:
+Check out this [link to Google](https://google.com) and this ![example image](/images/example.jpg).
+
+7. Special Notes
+---------------
+- Always use double line breaks to separate different types of content
+- Keep your formatting consistent throughout the post
+- Make sure there are no extra spaces at the end of lines
+- Use proper indentation for code blocks and lists
+- Inline formatting (*, **, [], ![]) can be used within paragraphs, lists, and headers
+
+Example of a complete post:
+--------------------------
+
+Title: My First Post
+Author: yourname
+Date: 2025/01/01
+Tags: programming, tutorial
+Image: /images/posts/post-1.jpg
+
+Welcome to my first blog post!
+
+## Introduction
+
+This is the introduction paragraph with *italic* and **bold** text.
+
+## Main Content
+
+Here's a list of important points:
+
+- First *point* with emphasis
+- Second point with a [link](https://example.com)
+- Third point with an ![icon](/images/icon.jpg)
+
+## Code Example
+
+Here's how to write a simple function:
+
+```
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+```
+
+Check out this [GitHub repository](https://github.com/example) for more examples.
+
+## Conclusion
+
+That's all for now! You can find more information in the [documentation](https://docs.example.com). 

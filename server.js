@@ -44,7 +44,9 @@ async function parsePostMetadata(txtContent) {
             if (key === 'tags') {
                 metadata[key] = value.split(',').map(tag => tag.trim());
             } else if (key === 'date') {
-                metadata[key] = new Date(value).toISOString();
+                // Convert YYYY/MM/DD to ISO string
+                const [year, month, day] = value.split('/');
+                metadata[key] = new Date(year, month - 1, day).toISOString();
             } else {
                 metadata[key] = value;
             }

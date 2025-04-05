@@ -36,7 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Display each post
                 posts.forEach(post => {
                     const postElement = document.createElement('article');
-                    postElement.className = 'post';
+                    // Add full-post class only when viewing a single post
+                    const isSinglePost = window.location.pathname.startsWith('/post/');
+                    postElement.className = isSinglePost ? 'post full-post' : 'post';
                     
                     // Format the date
                     const postDate = new Date(post.date);
@@ -54,11 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             '</div>';
                     }
                     
-                    // Add Read More link if needed
+                    // Add Read More link if we're on the main page and the post has more content
                     let readMoreHtml = '';
-                    if (post.hasFullPost) {
+                    if (!isSinglePost && post.content.length > 500) {
                         readMoreHtml = `<p class="read-more"><a href="/post/${post.id}">Read More...</a></p>`;
                     }
+                    
+                    // Format content only for full post view
+                    const content = isSinglePost ? formatContent(post.content) : post.content;
                     
                     postElement.innerHTML = `
                         <h2 class="post-title">${post.title}</h2>
@@ -67,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${tagsHtml}
                         </div>
                         ${post.image ? `<div class="post-image-container"><img src="${post.image}" alt="${post.title}" class="post-image"></div>` : ''}
-                        <div class="post-content">${post.content}</div>
+                        <div class="post-content">${content}</div>
                         ${readMoreHtml}
                     `;
                     
@@ -148,5 +153,66 @@ document.addEventListener('DOMContentLoaded', function() {
         paginationElement.innerHTML = paginationHTML;
         
         paginationContainer.appendChild(paginationElement);
+    }
+
+    function formatContent(content) {
+        // Split content into paragraphs
+        let paragraphs = content.split('\n\n');
+        
+        // Process each paragraph
+        paragraphs = paragraphs.map(paragraph => {
+            // Trim whitespace
+            paragraph = paragraph.trim();
+            
+            // Skip empty paragraphs
+            if (!paragraph) return '';
+            
+            // Handle headers
+            if (paragraph.startsWith('## ')) {
+                return `<h2>${paragraph.substring(3)}</h2>`;
+            }
+            
+            // Handle code blocks
+            if (paragraph.startsWith('```')) {
+                const codeContent = paragraph.substring(3, paragraph.length - 3).trim();
+                return `<pre><code>${codeContent}</code></pre>`;
+            }
+            
+            // Handle lists
+            if (paragraph.startsWith('- ')) {
+                const items = paragraph.split('\n').map(item => {
+                    if (item.startsWith('- ')) {
+                        return `<li>${formatInline(item.substring(2))}</li>`;
+                    }
+                    return '';
+                }).filter(item => item);
+                return `<ul>${items.join('')}</ul>`;
+            }
+            
+            // Handle inline formatting
+            paragraph = formatInline(paragraph);
+            
+            // Basic paragraph
+            return `<p>${paragraph}</p>`;
+        });
+        
+        // Join paragraphs
+        return paragraphs.join('\n');
+    }
+
+    function formatInline(text) {
+        // Handle bold (**text**)
+        text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        
+        // Handle italic (*text*)
+        text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        
+        // Handle links [text](url)
+        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+        
+        // Handle inline images ![alt](url)
+        text = text.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="inline-image">');
+        
+        return text;
     }
 });

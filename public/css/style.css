@@ -16,6 +16,8 @@
     --pagination-disabled-color: #aaa;
     --pagination-active-bg: #4CAF50;
     --pagination-active-color: white;
+    --heading-color: #333;
+    --code-bg: #f0f0f0;
 }
 
 [data-theme="dark"] {
@@ -36,6 +38,8 @@
     --pagination-disabled-color: #666666;
     --pagination-active-bg: #4CAF50;
     --pagination-active-color: white;
+    --heading-color: #e0e0e0;
+    --code-bg: #333;
 }
 
 * {
@@ -108,6 +112,53 @@ main {
     line-height: 1.7;
 }
 
+.post-content p {
+    margin-bottom: 1em;
+}
+
+.post-content h2 {
+    font-size: 1.5em;
+    margin: 1.5em 0 1em;
+    color: var(--heading-color);
+}
+
+.post-content code {
+    background: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.post-content pre {
+    background: var(--code-bg);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+.post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.post-content ul, .post-content ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.post-content li {
+    margin-bottom: 0.5em;
+}
+
+.post-content strong {
+    font-weight: bold;
+}
+
+.post-content em {
+    font-style: italic;
+}
+
 .post-image-container {
     margin: 20px 0;
     text-align: center;
@@ -165,7 +216,56 @@ footer {
 }
 
 .full-post .post-content {
-    line-height: 1.8;
+    line-height: 1.6;
+    margin: 1em 0;
+}
+
+.full-post .post-content p {
+    margin-bottom: 1em;
+}
+
+.full-post .post-content h2 {
+    font-size: 1.5em;
+    margin: 1.5em 0 1em;
+    color: var(--heading-color);
+}
+
+.full-post .post-content code {
+    background: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.full-post .post-content pre {
+    background: var(--code-bg);
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1em 0;
+}
+
+.full-post .post-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.full-post .post-content ul, 
+.full-post .post-content ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.full-post .post-content li {
+    margin-bottom: 0.5em;
+}
+
+.full-post .post-content strong {
+    font-weight: bold;
+}
+
+.full-post .post-content em {
+    font-style: italic;
 }
 
 .full-post .post-title {

@@ -1,10 +1,11 @@
 {
-  "title": "Creating a Blog with Node.js",
-  "author": "Alex Johnson",
-  "date": "2025-04-02T15:45:00.000Z",
+  "title": "Node.js Fundamentals",
+  "author": "warp",
+  "date": "2025-04-03T05:00:00.000Z",
   "tags": [
-    "blog",
     "nodejs",
-    "project"
-  ]
+    "javascript",
+    "backend"
+  ],
+  "image": "/images/posts/post-3.png"
 }

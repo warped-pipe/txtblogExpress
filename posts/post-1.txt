@@ -1,23 +1,29 @@
 title: Building a Blog with Node.js and Express
 author: warp
-date: 2025-04-01T12:00:00Z
+date: 2025/04/01
 tags: nodejs, javascript, tutorial
 image: /images/posts/post-1.jpg
 ---
 
 I had previously been using classicpress for blogging, but was unhappy with it overall and felt that what I needed was something much more lightweight, simple, and most importantly, I wanted to be able to take my .txt files -- the way that I had been taking notes and creating documentation for many years -- and turn them into a blog.
 
+
 So, I set out to make something that would make it easier for me to share my projects by allowing me to throw the .txt files that I'm writing anyway into a directory and have them automatically converted to HTML, an RSS feed, and a sitemap -- while also not sacrificing style and layout. I probably could have used Hugo or something, but where is the fun in that? Plus, now I have something to build on. Who knows what it'll be in a few years?
+
 
 *below is the content that AI-generated while building the blog system. it was interesting enough that I felt like keeping it here. before, this was the first three posts -- I just combined them into one*
 
+
 Today we're creating a simple blog system using Node.js, Express, and plain text files for content.
+
 
 Instead of using a database, we're storing each post as a pair of files:
 1. A JSON file containing metadata (title, author, date, tags)
 2. A TXT file containing the actual content of the post
 
+
 This approach is simple yet powerful for small sites and personal blogs. It makes content management straightforward - just add new files to the posts directory!
+
 
 ## Benefits of This Approach
 
@@ -29,9 +35,12 @@ This approach is simple yet powerful for small sites and personal blogs. It make
 
 In the next post, we'll look at adding an admin interface for creating and editing posts without directly editing files.
 
+
 Express.js is one of the most popular web frameworks for Node.js. It provides a robust set of features for building web applications and APIs.
 
+
 Express makes it easy to create routes, handle requests, and manage middleware. In this post, we'll look at how to set up a basic Express server and handle different types of requests.
+
 
 ## Basic Express Server
 
